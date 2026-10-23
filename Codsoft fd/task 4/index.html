@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeTunes - Music Player</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="app">
+        <header class="navbar">
+            <a href="#" class="logo">♫ Vibe<span>Tunes</span></a>
+            <button id="themeToggle" class="theme-btn"
+                    aria-label="Toggle light and dark theme">☀️</button>
+        </header>
+
+        <main>
+            <section class="welcome">
+                <p class="eyebrow">YOUR MUSIC, YOUR MOOD</p>
+                <h1>Find your <span>vibe.</span></h1>
+                <p>Your personal space for music, focus, and good feelings.</p>
+            </section>
+
+            <section class="player-layout">
+                <!-- Main player -->
+                <div class="player-card">
+                    <div class="player-top">
+                        <span class="live-dot"></span>
+                        NOW PLAYING
+                        <button id="favoriteBtn" class="favorite-btn"
+                                aria-label="Add song to favorites"
+                                title="Add to favorites">♡</button>
+                    </div>
+
+                    <div class="album-art" id="albumArt">
+                        <div class="art-orb orb-one"></div>
+                        <div class="art-orb orb-two"></div>
+                        <div class="art-note">♫</div>
+                        <span class="art-label">VIBETUNES</span>
+                    </div>
+
+                    <div class="song-info">
+                        <div>
+                            <h2 id="songTitle">Choose a song</h2>
+                            <p id="artistName">Your music collection</p>
+                        </div>
+                        <span id="playingBadge" class="playing-badge">READY</span>
+                    </div>
+
+                    <audio id="audioPlayer" preload="metadata"></audio>
+
+                    <div class="progress-area">
+                        <input type="range" id="progressBar"
+                               min="0" max="100" value="0"
+                               aria-label="Seek through song">
+                        <div class="time-labels">
+                            <span id="currentTime">0:00</span>
+                            <span id="duration">0:00</span>
+                        </div>
+                    </div>
+
+                    <div class="controls">
+                        <button id="shuffleBtn" class="utility-btn"
+                                aria-label="Toggle shuffle"
+                                aria-pressed="false" title="Shuffle">🔀</button>
+
+                        <button id="prevBtn" class="control-btn"
+                                aria-label="Previous song" title="Previous">⏮</button>
+
+                        <button id="playBtn" class="play-btn"
+                                aria-label="Play" title="Play">▶</button>
+
+                        <button id="nextBtn" class="control-btn"
+                                aria-label="Next song" title="Next">⏭</button>
+
+                        <button id="repeatBtn" class="utility-btn"
+                                aria-label="Toggle repeat"
+                                aria-pressed="false" title="Repeat off">🔁</button>
+                    </div>
+
+                    <div class="volume-area">
+                        <button id="muteBtn" class="volume-icon"
+                                aria-label="Mute" title="Mute">🔊</button>
+                        <input type="range" id="volumeBar"
+                               min="0" max="1" step="0.01" value="0.7"
+                               aria-label="Volume">
+                        <span id="volumeValue">70%</span>
+                    </div>
+
+                    <div class="player-note">
+                        <span>♫</span> Good music. Good mood.
+                    </div>
+                </div>
+
+                <!-- Playlist -->
+                <aside class="playlist-card">
+                    <div class="playlist-heading">
+                        <div>
+                            <p class="eyebrow">YOUR COLLECTION</p>
+                            <h2>Playlist</h2>
+                        </div>
+                        <span id="trackCount" class="track-count">0 songs</span>
+                    </div>
+
+                    <div class="playlist-tools">
+                        <input type="search" id="playlistSearch"
+                               placeholder="Search songs..."
+                               aria-label="Search playlist">
+                        <select id="playlistFilter"
+                                aria-label="Filter playlist">
+                            <option value="all">All Songs</option>
+                            <option value="favorites">Favorites</option>
+                        </select>
+                    </div>
+
+                    <label class="upload-btn" for="fileInput">
+                        <span>＋</span> Add Your Music
+                    </label>
+                    <input type="file" id="fileInput"
+                           accept="audio/*" multiple hidden>
+
+                    <p class="upload-hint">
+                        Select audio files from your device to create your playlist.
+                    </p>
+
+                    <div id="playlist" class="playlist"></div>
+
+                    <div id="playlistEmpty" class="playlist-empty">
+                        <span>🎧</span>
+                        <h3>Your playlist is waiting</h3>
+                        <p>Add audio files to start listening.</p>
+                    </div>
+
+                    <div class="playlist-footer">
+                        <span>MADE FOR YOUR MOMENTS</span>
+                        <span>♪ ♫ ♪</span>
+                    </div>
+                </aside>
+            </section>
+        </main>
+
+        <footer>
+            <p>VibeTunes © <span id="year"></span></p>
+            <p>Made for music lovers ♡</p>
+        </footer>
+    </div>
+</body>
+</html>

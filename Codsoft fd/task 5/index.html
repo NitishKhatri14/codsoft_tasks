@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="InkSpace - Stories, ideas and inspiration about technology, lifestyle and creativity.">
+    <title>InkSpace | Stories Worth Reading</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-inner">
+            <a href="#" class="logo" id="homeLogo">ink<span>space.</span></a>
+
+            <nav id="navLinks" class="nav-links" aria-label="Main navigation">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#articles" class="nav-link">Articles</a>
+                <a href="#categories" class="nav-link">Categories</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="themeToggle" class="theme-btn"
+                        type="button" aria-label="Toggle dark mode">☾</button>
+                <button id="menuToggle" class="menu-btn"
+                        type="button" aria-label="Open navigation"
+                        aria-expanded="false">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Homepage -->
+        <div id="homePage">
+            <section class="hero" id="home">
+                <div class="hero-content">
+                    <span class="eyebrow">IDEAS THAT INSPIRE</span>
+                    <h1>Stories worth <span>reading.</span></h1>
+                    <p>
+                        Discover fresh perspectives on technology, creativity,
+                        lifestyle and everything in between.
+                    </p>
+                    <a href="#articles" class="primary-btn">Explore Articles ↗</a>
+                    <div class="hero-note">
+                        <span class="hero-dot"></span>
+                        New perspectives, every week
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=85"
+                            alt="Notebook and pen on a writer's desk">
+                    </div>
+                    <div class="floating-note">
+                        <span>✦</span>
+                        A little inspiration goes a long way.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured article -->
+            <section class="featured-section container">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">EDITOR'S PICK</span>
+                        <h2>Featured story</h2>
+                    </div>
+                </div>
+                <div id="featuredPost"></div>
+            </section>
+
+            <!-- Categories -->
+            <section class="category-section container" id="categories">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">FIND YOUR INTEREST</span>
+                        <h2>Explore categories</h2>
+                    </div>
+                </div>
+
+                <div class="category-list" id="categoryList">
+                    <button class="category-chip active" data-category="All">All</button>
+                    <button class="category-chip" data-category="Technology">Technology</button>
+                    <button class="category-chip" data-category="Lifestyle">Lifestyle</button>
+                    <button class="category-chip" data-category="Creativity">Creativity</button>
+                    <button class="category-chip" data-category="Productivity">Productivity</button>
+                </div>
+            </section>
+
+            <!-- Article grid -->
+            <section class="articles-section container" id="articles">
+                <div class="section-heading article-heading">
+                    <div>
+                        <span class="eyebrow">THE LATEST</span>
+                        <h2>Explore our stories</h2>
+                        <p>Thoughtful reads for curious minds.</p>
+                    </div>
+
+                    <div class="search-box">
+                        <span>⌕</span>
+                        <input type="search" id="searchInput"
+                               placeholder="Search articles..."
+                               aria-label="Search articles">
+                    </div>
+                </div>
+
+                <div class="tag-list" id="tagList">
+                    <button class="tag-chip active" data-tag="All">All tags</button>
+                    <button class="tag-chip" data-tag="AI">#AI</button>
+                    <button class="tag-chip" data-tag="Design">#Design</button>
+                    <button class="tag-chip" data-tag="Wellness">#Wellness</button>
+                    <button class="tag-chip" data-tag="Learning">#Learning</button>
+                </div>
+
+                <p id="resultCount" class="result-count"></p>
+                <div id="articleGrid" class="article-grid"></div>
+
+                <div id="noResults" class="no-results" hidden>
+                    <span>🔎</span>
+                    <h3>No stories found</h3>
+                    <p>Try another search term or category.</p>
+                    <button id="resetSearch" class="secondary-btn">Clear filters</button>
+                </div>
+
+                <div class="load-more-wrap">
+                    <button id="loadMoreBtn" class="secondary-btn">
+                        Load More Articles ↓
+                    </button>
+                </div>
+            </section>
+
+            <!-- Newsletter-style callout -->
+            <section class="newsletter-section container" id="about">
+                <div>
+                    <span class="eyebrow">A SPACE FOR CURIOUS MINDS</span>
+                    <h2>Good ideas deserve<br>to be shared.</h2>
+                    <p>
+                        InkSpace is a blog dedicated to useful ideas,
+                        creative thinking and lifelong learning.
+                    </p>
+                </div>
+                <a href="#articles" class="primary-btn">Keep Exploring ↗</a>
+            </section>
+        </div>
+
+        <!-- Article detail view -->
+        <section id="articlePage" class="article-detail container" hidden>
+            <button id="backToBlog" class="back-btn">← Back to all articles</button>
+            <article id="articleContent"></article>
+
+            <section class="comments-section">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">JOIN THE CONVERSATION</span>
+                        <h2>Comments</h2>
+                    </div>
+                    <span id="commentCount" class="result-count">0 comments</span>
+                </div>
+
+                <form id="commentForm" class="comment-form">
+                    <label for="commentName">Your name</label>
+                    <input id="commentName" type="text" maxlength="50"
+                           placeholder="Enter your name" required>
+
+                    <label for="commentText">Your comment</label>
+                    <textarea id="commentText" maxlength="1000" rows="4"
+                              placeholder="Share your thoughts..." required></textarea>
+
+                    <p id="commentStatus" role="status"></p>
+                    <button class="primary-btn" type="submit">Post Comment ↗</button>
+                </form>
+
+                <div id="commentList" class="comment-list"></div>
+            </section>
+
+            <section class="related-section">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">KEEP DISCOVERING</span>
+                        <h2>Related stories</h2>
+                    </div>
+                </div>
+                <div id="relatedGrid" class="article-grid related-grid"></div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <a href="#" class="logo footer-logo">ink<span>space.</span></a>
+            <p>Ideas, inspiration, and stories for curious minds.</p>
+            <p>© <span id="year"></span> InkSpace. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

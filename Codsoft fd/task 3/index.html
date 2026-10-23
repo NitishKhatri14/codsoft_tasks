@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker | MoneyWise</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="app">
+        <header class="navbar">
+            <a href="#" class="logo">Money<span>Wise.</span></a>
+            <button id="themeToggle" class="theme-btn"
+                    type="button" aria-label="Toggle dark mode">🌙</button>
+        </header>
+
+        <main>
+            <section class="welcome">
+                <p class="eyebrow">PERSONAL FINANCE DASHBOARD</p>
+                <h1>Take control of your <span>money.</span></h1>
+                <p>Track your income, manage expenses, and make smarter financial decisions.</p>
+                <p id="todayDate" class="today"></p>
+            </section>
+
+            <!-- Financial summary -->
+            <section class="summary-grid">
+                <article class="summary-card balance-card">
+                    <div class="summary-top">
+                        <span>Current Balance</span>
+                        <span class="summary-icon">💰</span>
+                    </div>
+                    <h2 id="balance">₹0.00</h2>
+                    <p>Your available balance</p>
+                </article>
+
+                <article class="summary-card income-card">
+                    <div class="summary-top">
+                        <span>Total Income</span>
+                        <span class="summary-icon">📈</span>
+                    </div>
+                    <h2 id="totalIncome">₹0.00</h2>
+                    <p>Money received</p>
+                </article>
+
+                <article class="summary-card expense-card">
+                    <div class="summary-top">
+                        <span>Total Expenses</span>
+                        <span class="summary-icon">📉</span>
+                    </div>
+                    <h2 id="totalExpense">₹0.00</h2>
+                    <p>Money spent</p>
+                </article>
+            </section>
+
+            <!-- Transaction form -->
+            <section class="panel">
+                <div class="section-heading">
+                    <div>
+                        <h2 id="formHeading">Add Transaction</h2>
+                        <p>Record your income or expenses.</p>
+                    </div>
+                </div>
+
+                <form id="transactionForm" novalidate>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="description">Description *</label>
+                            <input type="text" id="description"
+                                   placeholder="e.g. Monthly salary or groceries"
+                                   maxlength="100" required>
+                            <small class="error" id="descriptionError"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type">Transaction Type *</label>
+                            <select id="type" required>
+                                <option value="expense">Expense</option>
+                                <option value="income">Income</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amount">Amount (₹) *</label>
+                            <input type="number" id="amount"
+                                   placeholder="Enter amount"
+                                   min="0.01" max="1000000000000"
+                                   step="0.01" required>
+                            <small class="error" id="amountError"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Category *</label>
+                            <select id="category" required></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Date *</label>
+                            <input type="date" id="date" required>
+                            <small class="error" id="dateError"></small>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn" id="submitBtn">
+                            + Add Transaction
+                        </button>
+                        <button type="button" class="btn btn-secondary"
+                                id="cancelEdit" hidden>
+                            Cancel Edit
+                        </button>
+                    </div>
+                    <p id="formStatus" role="status" aria-live="polite"></p>
+                </form>
+            </section>
+
+            <!-- Transaction history -->
+            <section class="panel history-panel">
+                <div class="section-heading history-heading">
+                    <div>
+                        <h2>Transaction History</h2>
+                        <p>Review and manage your money movements.</p>
+                    </div>
+                    <span class="transaction-count" id="transactionCount">
+                        0 transactions
+                    </span>
+                </div>
+
+                <div class="filters">
+                    <div class="search-box">
+                        <span>🔍</span>
+                        <input type="search" id="searchInput"
+                               placeholder="Search transactions..."
+                               aria-label="Search transactions">
+                    </div>
+
+                    <select id="typeFilter" aria-label="Filter by type">
+                        <option value="all">All Types</option>
+                        <option value="income">Income</option>
+                        <option value="expense">Expenses</option>
+                    </select>
+
+                    <select id="categoryFilter" aria-label="Filter by category">
+                        <option value="all">All Categories</option>
+                    </select>
+
+                    <select id="sortFilter" aria-label="Sort transactions">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="highest">Highest Amount</option>
+                        <option value="lowest">Lowest Amount</option>
+                    </select>
+                </div>
+
+                <div class="transaction-list" id="transactionList"></div>
+
+                <div class="empty-state" id="emptyState">
+                    <div>🧾</div>
+                    <h3 id="emptyTitle">No transactions yet</h3>
+                    <p id="emptyMessage">
+                        Add your first transaction to see it here.
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>MoneyWise — Make every rupee count.</p>
+            <p>© <span id="year"></span> MoneyWise</p>
+        </footer>
+    </div>
+</body>
+</html>
