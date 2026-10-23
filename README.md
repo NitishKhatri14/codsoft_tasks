@@ -44,7 +44,7 @@ A responsive blog platform with featured articles, categories, tags, search, art
 
 ## Author
 
-Your Name
+Nitish
 
 ## License
 
